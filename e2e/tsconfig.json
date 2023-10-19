@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "jsx": "react",
+    "lib": ["es6", "DOM", "ES2021"],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "noEmit": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "target": "ES2021",
+    "skipLibCheck": true,
+    "types": ["node", "webdriverio/async", "@wdio/mocha-framework"]
+  },
+  "exclude": ["node_modules", "jest.config.js", "react-native.config.js"]
+}

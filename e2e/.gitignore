@@ -1,0 +1,11 @@
+node_modules/
+
+# e2e apps folder
+# temporary save app build
+apps/*
+!apps/.gitkeep
+
+# e2e logs
+appium.log
+screenrecord.log
+emulator.log

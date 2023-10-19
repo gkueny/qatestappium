@@ -1,3 +1,7 @@
+# QA test
+
+Le but de ce test est de compléter le test [`e2e/tests/specs/modal.spec.ts`](./e2e/tests/specs/modal.spec.ts).
+
 ## Prérequis
 
 - node: https://nodejs.org/fr
@@ -10,6 +14,7 @@ Installer les dépendances:
 
 ```bash
 yarn
+cd e2e && yarn && cd ..
 ```
 
 ## Lancer l'emulateur Android
@@ -27,7 +32,8 @@ yarn android
 ## Lancer les tests e2e
 
 ```bash
-yarn e2e:tests
+cd e2e
+EMULATOR_NAME=[EMULATOR_NAME] yarn e2e:tests
 ```
 
 ## Re-compiler l'application

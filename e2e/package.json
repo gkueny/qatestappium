@@ -1,0 +1,30 @@
+{
+  "name": "appium-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e2e:tests": "wdio config/wdio.local.android.app.conf.ts -l silent",
+    "run:appium": "yarn appium --base-path \"/wd/hub\"",
+    "cleaninstall": "rm -rf node_modules && yarn"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "@types/lodash": "^4.14.191",
+    "@wdio/appium-service": "v7",
+    "@wdio/cli": "v7",
+    "@wdio/local-runner": "v7",
+    "@wdio/mocha-framework": "v7",
+    "appium": "^2.0.1",
+    "appium-uiautomator2-driver": "^2.29.2",
+    "child_process": "^1.0.2",
+    "cwd": "^0.10.0",
+    "eslint-plugin-wdio": "^8.8.7",
+    "lodash": "^4.17.21",
+    "mocha": "^10.2.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {}
+}
