@@ -1,118 +1,131 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
+  Modal,
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
+  TextInput,
+  TextStyle,
+  TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const backgroundStyle: ViewStyle = {
+  backgroundColor: 'white',
+  flex: 1,
+  paddingVertical: 5,
+  paddingHorizontal: 10,
+};
+const textStyle: TextStyle = {
+  color: 'black',
+};
+const titleStyle: TextStyle = {
+  fontSize: 24,
+  textAlign: 'center',
+};
+const buttonStyle: ViewStyle = {
+  width: 150,
+  paddingVertical: 10,
+  borderRadius: 5,
+  backgroundColor: '#f08080',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+const inputStyle: ViewStyle = {
+  height: 40,
+  margin: 12,
+  borderWidth: 1,
+  padding: 10,
+};
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+function QAModal({
+  isOpen,
+  close,
+}: {
+  isOpen: boolean;
+  close: () => void;
+}): JSX.Element {
+  const [login, setLogin] = React.useState<string>('');
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <Modal visible={isOpen}>
+      <View style={backgroundStyle} testID="modal">
+        <TouchableOpacity
+          style={buttonStyle}
+          onPress={close}
+          testID="closeModalButton">
+          <Text style={[textStyle, titleStyle]}>Fermer</Text>
+        </TouchableOpacity>
+        <View style={[backgroundStyle, {justifyContent: 'center'}]}>
+          <Text style={[textStyle, titleStyle]}>Bienvenue sur la modal QA</Text>
+          <TextInput
+            testID="loginInput"
+            placeholder="Saisissez votre login"
+            style={inputStyle}
+            onChangeText={setLogin}
+          />
+          <Text style={[textStyle, {textAlign: 'center'}]}>
+            Bonjour {login ? login : 'default'}
+          </Text>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const openModal = React.useCallback(() => {
+    setModalIsOpen(true);
+  }, []);
+  const closeModal = React.useCallback(() => {
+    setModalIsOpen(false);
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        barStyle={'light-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+        <View style={backgroundStyle}>
+          <Text style={[textStyle, titleStyle]}>QA test</Text>
         </View>
+        <View style={backgroundStyle}>
+          <Text style={[textStyle]} testID="loremipsumText">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elit
+            nisl, varius ac tortor quis, accumsan convallis justo. Mauris auctor
+            accumsan leo, sed pretium diam mollis sit amet. Sed vel posuere
+            dolor. Vestibulum vestibulum felis libero, id cursus ipsum elementum
+            sit amet. Vivamus faucibus elit ornare est pellentesque, id mollis
+            magna tristique. In molestie mi in lacus vulputate sodales. Nunc et
+            tortor malesuada, dapibus est eget, aliquet ante. Quisque nec magna
+            a justo eleifend blandit. Vestibulum ante ipsum primis in faucibus
+            orci luctus et ultrices posuere cubilia curae; Etiam et mi non massa
+            porta placerat. Quisque vel sodales purus. Nunc ultrices lacinia
+            pretium. Sed rutrum erat augue, ac venenatis magna interdum quis. Ut
+            a euismod ligula, ut congue est.
+          </Text>
+        </View>
+        <View style={[backgroundStyle, {alignItems: 'center'}]}>
+          <TouchableOpacity
+            style={buttonStyle}
+            onPress={openModal}
+            testID="openModalButton">
+            <Text style={[textStyle]}>Afficher la modale</Text>
+          </TouchableOpacity>
+        </View>
+        <QAModal isOpen={modalIsOpen} close={closeModal} />
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
