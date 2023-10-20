@@ -10,7 +10,7 @@ describe('Home Navigation', () => {
     await HomePage.getLoremIpsum();
   });
 
-  it('should be able to open modal, see information, tap user login & see greeting text', async function () {
+  it('should be able to open modal, see information, tap user login, see greeting text & close modal', async function () {
     // TODO
   });
 });

@@ -1,6 +1,6 @@
 # QA test
 
-Le but de ce test est de compléter le test [`e2e/tests/specs/modal.spec.ts`](./e2e/tests/specs/modal.spec.ts).
+Le but de ce test est de compléter le test [`./e2e/tests/specs/modal.spec.ts`](./e2e/tests/specs/modal.spec.ts).
 
 Étapes du test:
 
