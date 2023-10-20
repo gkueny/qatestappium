@@ -6,10 +6,9 @@ Le but de ce test est de compléter le test [`./e2e/tests/specs/modal.spec.ts`](
 
 - Installer le projet
 - Lancer le test e2e existant
-- Écrire le test e2e demandé et le faire passer 
+- Écrire le test e2e demandé et le faire passer
 
 https://github.com/gkueny/qatestappium/assets/10655690/b437261d-8822-4bd8-ac53-9d818795256f
-
 
 ## Prérequis
 
@@ -36,6 +35,13 @@ emulator -avd "[EMULATOR_NAME]" -verbose -show-kernel -no-audio -netdelay none -
 
 ```bash
 yarn android
+```
+
+## Lancer manuellement le serveur appium
+
+```bash
+cd e2e
+yarn run:appium
 ```
 
 ## Lancer les tests e2e
