@@ -1,5 +1,6 @@
 import {AppiumDriver} from '../helpers/AppiumDriver';
 import HomePage from '../screenObjects/HomePage';
+import ModalPage from '../screenObjects/ModalPage';
 
 describe('Home Navigation', () => {
   afterEach(async function () {
